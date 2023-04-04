@@ -3,31 +3,49 @@ package com.bl.snakeladder;
 public class SnakeLadder {
 
     int position = 0;
-  static void dieRole(){
+   int dieRole(){
       int diaValue = (int)(Math.random()*10 % 6)+1;
       System.out.println(diaValue);
-
+    return diaValue;
   }
-  static  void  play(){
-      int number =(int)(Math.random()*10%3);
+   void  play() {
 
-      switch (number){
+       while (position < 100) {
 
-          case 0:
-              System.out.println("No Player Move");
-              break;
-          case 1:
-              System.out.println("Ladder the player moves ahead");
-              break;
-          case 2:
-              System.out.println("Snake the player moves behind");
-              break;
-      }
 
+       int number = (int) (Math.random() * 10 % 3);
+       int diaValue = dieRole();
+
+       switch (number) {
+
+           case 0:
+               System.out.println("No Player Move");
+               break;
+           case 1:
+               System.out.println("Ladder the player moves ahead");
+               position = position + diaValue;
+               break;
+           case 2:
+               System.out.println("Snake the player moves behind");
+               position = position - diaValue;
+               break;
+           default:{
+               System.out.println("Other option");
+           }
+       }
+           System.out.println("position is :" + position);
+   }
   }
-    public static void main(String[] args) {
 
-             dieRole();
-             play();
+  static void  WinPlay(){
+      int winposision = 100;
+  }
+  public static void main(String[] args) {
+
+      SnakeLadder obj = new SnakeLadder();
+
+             obj.dieRole();
+             obj.play();
     }
+
 }
